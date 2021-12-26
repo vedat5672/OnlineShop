@@ -64,9 +64,9 @@
               "target": "Package",
               "version": "[5.0.12, )"
             },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+            "X.PagedList.Mvc.Core": {
               "target": "Package",
-              "version": "[5.0.2, )"
+              "version": "[7.6.0, )"
             }
           },
           "imports": [

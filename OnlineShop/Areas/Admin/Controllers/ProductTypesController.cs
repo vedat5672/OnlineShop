@@ -9,10 +9,8 @@ using OnlineShop.Models;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
-    [Area("admin")]
-    [Route("admin")]
-    [Route("admin/productTypes")]
-
+    [Area("Admin")]
+    [Authorize(Roles ="Super user")]
     public class ProductTypesController : Controller
     {
         private ApplicationDbContext _db;
@@ -21,8 +19,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             _db = db;
         }
-        
-        [Route("Index")]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             //var data = _db.ProductTypes.ToList();
@@ -30,7 +27,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         //GET Create Action Method
-        [Route("create")]
+        
         public ActionResult Create()
         {
             return View();
@@ -40,14 +37,13 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("create")]
         public async Task<IActionResult> Create(ProductTypes productTypes)
         {
             if(ModelState.IsValid)
             {
                 _db.ProductTypes.Add(productTypes);
                 await _db.SaveChangesAsync();
-                TempData["Success"] = "Product type has been saved";
+                TempData["save"] = "Product type has been saved";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -55,7 +51,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         //GET Edit Action Method
-        [Route("edit")]
+       
         public ActionResult Edit(int? id)
         {
             if(id==null)
@@ -75,14 +71,13 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("edit")]
         public async Task<IActionResult> Edit(ProductTypes productTypes)
         {
             if (ModelState.IsValid)
             {
                 _db.Update(productTypes);
                 await _db.SaveChangesAsync();
-                TempData["Success"] = "Product type has been updated";
+                TempData["edit"] = "Product type has been updated";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -91,7 +86,7 @@ namespace OnlineShop.Areas.Admin.Controllers
 
 
         //GET Details Action Method
-        [Route("details")]
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -111,7 +106,6 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("details")]
         public  IActionResult Details(ProductTypes productTypes)
         {
             return RedirectToAction(nameof(Index));
@@ -119,7 +113,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         //GET Delete Action Method
-        [Route("delete")]
+
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -139,7 +133,6 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("delete")]
         public async Task<IActionResult> Delete(int? id, ProductTypes productTypes)
         {
             if(id==null)
@@ -161,7 +154,7 @@ namespace OnlineShop.Areas.Admin.Controllers
             {
                 _db.Remove(productType);
                 await _db.SaveChangesAsync();
-                TempData["Success"] = "Product type has been deleted";
+                TempData["delete"] = "Product type has been deleted";
                 return RedirectToAction(nameof(Index));
             }
 

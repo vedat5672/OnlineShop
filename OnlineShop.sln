@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop", "OnlineShop\OnlineShop.csproj", "{82FDDACE-4093-4A0E-A676-E52FEBEE49C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop", "OnlineShop\OnlineShop.csproj", "{7FC3005D-29DF-4835-8391-44DE182F899A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{82FDDACE-4093-4A0E-A676-E52FEBEE49C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82FDDACE-4093-4A0E-A676-E52FEBEE49C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82FDDACE-4093-4A0E-A676-E52FEBEE49C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82FDDACE-4093-4A0E-A676-E52FEBEE49C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC3005D-29DF-4835-8391-44DE182F899A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC3005D-29DF-4835-8391-44DE182F899A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC3005D-29DF-4835-8391-44DE182F899A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC3005D-29DF-4835-8391-44DE182F899A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {EC36818B-F826-49D5-AB68-119DEABAB838}
+		SolutionGuid = {3BE0A7E8-26CE-47B9-AAF6-D651B57D4C7B}
 	EndGlobalSection
 EndGlobal

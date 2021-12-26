@@ -1,6 +1,6 @@
 ﻿$(function () {
 
-   
+
 
     if ($("div.alert.notification").length) {
         setTimeout(() => {

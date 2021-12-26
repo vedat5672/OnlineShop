@@ -13,38 +13,24 @@ using OnlineShop.Models;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
-    [Area("admin")]
-    [Route("admin")]
-    [Route("admin/product")]
+    [Area("Admin")]
     public class ProductController : Controller
     {
         private ApplicationDbContext _db;
-        [Obsolete]
         private IHostingEnvironment _he;
 
-        [Obsolete]
         public ProductController(ApplicationDbContext db,IHostingEnvironment he)
         {
             _db = db;
             _he = he;
         }
-
-       
-        [Route("index")]
-       
-
         public IActionResult Index()
         {
             return View(_db.Products.Include(c=>c.ProductTypes).Include(f=>f.SpecialTag).ToList());
         }
 
         //POST Index action method
-      
-
-        [HttpPost]
-
-        [Route("index")]
-       
+       [HttpPost]
         public IActionResult Index(decimal? lowAmount, decimal? largeAmount)
         {
             var products = _db.Products.Include(c => c.ProductTypes).Include(c => c.SpecialTag)
@@ -57,7 +43,6 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         //Get Create method
-        [Route("create")]
         public IActionResult Create()
         {
             ViewData["productTypeId"]=new  SelectList(_db.ProductTypes.ToList(),"Id", "ProductType");
@@ -68,8 +53,6 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         //Post Create method
         [HttpPost]
-        [Obsolete]
-        [Route("create")]
         public async Task<IActionResult> Create(Products product,IFormFile image)
         {
             if(ModelState.IsValid)
@@ -96,7 +79,6 @@ namespace OnlineShop.Areas.Admin.Controllers
                 }
                 _db.Products.Add(product);
                 await _db.SaveChangesAsync();
-                TempData["Success"] = "Product type has been created";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -104,7 +86,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         //GET Edit Action Method
-        [Route("edit")]
+
         public ActionResult Edit(int? id)
         {
             ViewData["productTypeId"] = new SelectList(_db.ProductTypes.ToList(), "Id", "ProductType");
@@ -125,8 +107,6 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         //POST Edit Action Method
         [HttpPost]
-        [Obsolete]
-        [Route("edit")]
         public async Task<IActionResult> Edit(Products products, IFormFile image)
         {
             if (ModelState.IsValid)
@@ -144,7 +124,6 @@ namespace OnlineShop.Areas.Admin.Controllers
                 }
                 _db.Products.Update(products);
                 await _db.SaveChangesAsync();
-                TempData["Success"] = "Product type has been edited";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -152,7 +131,6 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         //GET Details Action Method
-        [Route("details")]
         public ActionResult Details(int? id)
         {
 
@@ -171,7 +149,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         //GET Delete Action Method
-        [Route("delete")]
+
         public ActionResult Delete(int? id)
         {
             if(id==null)
@@ -191,7 +169,6 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         [HttpPost]
         [ActionName("Delete")]
-        [Route("delete")]
         public async Task<IActionResult> DeleteConfirm(int? id)
         {
             if(id==null)
@@ -207,7 +184,6 @@ namespace OnlineShop.Areas.Admin.Controllers
 
             _db.Products.Remove(product);
             await _db.SaveChangesAsync();
-            TempData["Success"] = "Product type has been deleted";
             return RedirectToAction(nameof(Index));
         }
      

@@ -8,9 +8,7 @@ using OnlineShop.Models;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
-    [Area("admin")]
-    [Route("admin")]
-    [Route("admin/specialTag")]
+    [Area("Admin")]
     public class SpecialTagController : Controller
     {
         
@@ -22,14 +20,13 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         //GET Index Action Method
-        [Route("Index")]
         public IActionResult Index()
         {
             return View(_db.SpecialTags.ToList());
         }
 
         //GET Create Action Method
-        [Route("create")]
+
         public ActionResult Create()
         {
             return View();
@@ -39,7 +36,6 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("create")]
         public async Task<IActionResult> Create(SpecialTag specialTag)
         {
             if (ModelState.IsValid)
@@ -53,7 +49,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         //GET Edit Action Method
-        [Route("edit")]
+
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +69,6 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("edit")]
         public async Task<IActionResult> Edit(SpecialTag specialTag)
         {
             if (ModelState.IsValid)
@@ -87,7 +82,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         //GET Details Action Method
-        [Route("details")]
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -107,7 +102,6 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("details")]
         public IActionResult Details(SpecialTag specialTag)
         {
             return RedirectToAction(nameof(Index));
@@ -115,7 +109,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         //GET Delete Action Method
-        [Route("delete")]
+
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -135,7 +129,6 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("delete")]
         public async Task<IActionResult> Delete(int? id, SpecialTag specialTag)
         {
             if (id == null)
